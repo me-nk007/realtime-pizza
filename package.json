@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "author": "Nishant",
   "license": "ISC",
@@ -16,6 +19,12 @@
     "express-ejs-layouts": "^2.5.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^5.0.4",
+    "nodemon": "^3.0.1",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.69.5",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.7.15"
   }
 }
