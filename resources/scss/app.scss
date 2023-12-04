@@ -36,5 +36,59 @@ section.hero {
         background-color: $primary;
         border-color: $pure;
         color: $pure;
+        
+    }
+}
+
+// .hubber{
+//     &:hover {
+//         background-color: $hubber;
+//         border: round($number: 5);
+//         border-radius: 20px;
+//         border-color: $pure;
+//         transition: $smooth;
+//         // color: $pure;
+//     }
+// }
+
+.hubber{
+    cursor: pointer;
+    &:hover {
+        background-color: $hubber;
+        border: round($number: 5);
+        border-radius: 20px;
+        border-color: $pure;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.4s ease;
+        
+    }
+}
+
+.btn-primary{
+    background: $primary;
+    transition: $smooth;
+    &:hover{
+        background: $primary-hover;
+
+        
+    }
+}
+
+section.cart{
+    background: $secondary;
+    .amount{
+        color: $primary;
+    }
+}
+
+section.login{
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+    a {
+        color: $primary;
+
+        &:hover{
+            color: $primary-hover;
+        }
     }
 }
