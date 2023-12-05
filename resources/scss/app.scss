@@ -1,4 +1,6 @@
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
 
 body {
     font-family: 'Lato', sans-serif;
@@ -35,8 +37,10 @@ section.hero {
     &:hover {
         background-color: $primary;
         border-color: $pure;
-        color: $pure;
-        
+        color: $pure;  
+    }
+    &:focus{
+        outline: none;
     }
 }
 
@@ -68,9 +72,10 @@ section.hero {
     background: $primary;
     transition: $smooth;
     &:hover{
-        background: $primary-hover;
-
-        
+        background: $primary-hover;  
+    }
+    &:focus{
+        outline: none;
     }
 }
 
@@ -91,4 +96,9 @@ section.login{
             color: $primary-hover;
         }
     }
+}
+
+.noty_theme__mint {
+    border-radius: 500px!important;
+    padding-left: 8px!important;
 }
