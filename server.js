@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('express-flash')
 const MongoDbStore = require('connect-mongo')
-
+const passport = require('passport')
 
 // Database Connection
 // Code snippet to connect server to databse, can be reused.
@@ -26,13 +26,8 @@ connection.once('open', () => {
 });
 
 
+
 // Session store : Storing sessions in MongoDB Database
-// let mongoStore = new MongoDbStore({
-//             mongooseConnection: connection,
-//             collection: 'sessions'
-//         })
-
-
 let mongoStore = MongoDbStore.create({
             mongoUrl : url,
             collection: "sessions"
@@ -51,6 +46,14 @@ app.use(session({
 }))
 
 
+
+// Passport config
+const passportInit = require('./app/config/passport.js')
+passportInit(passport);
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 app.use(flash())                        // To flash the cookie inside request and response header
 
 
@@ -65,8 +68,12 @@ app.use(express.json())
 // Set Global Middleware
 app.use((req, res, next)=>{
     res.locals.session = req.session
+    res.locals.user = req.user
     next()
 })
+
+
+
 
 // set Template engine
 app.use(expressLayout)
