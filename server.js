@@ -5,7 +5,7 @@ const app = express()
 const ejs = require('ejs')
 const path = require('path')
 const expressLayout = require('express-ejs-layouts')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3300
 const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('express-flash')
@@ -56,8 +56,9 @@ app.use(flash())                        // To flash the cookie inside request an
 
 
 
-// Assets
+// Assets : In express.js, we have to tell it what type of data we are going to send via POST
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
 
 
